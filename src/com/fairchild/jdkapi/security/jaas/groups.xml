@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<groups>
+	<group gid="administrators" users="admin" />
+	<group gid="users"     users="jane,admin,john,lou" />
+	<group gid="managers"  users="lou" />
+</groups>

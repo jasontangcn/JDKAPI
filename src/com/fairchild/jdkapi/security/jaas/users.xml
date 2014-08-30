@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<users>
+	<user uid="admin" password="passw0rd" />
+	<user uid="jane"  password="passw0rd" />
+	<user uid="john"  password="passw0rd" />
+	<user uid="lou"   password="passw0rd" />	
+</users>

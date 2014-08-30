@@ -7,102 +7,102 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 
-import com.fairchild.jdkapi.Utils;
+import com.fairchild.jdkapi.JDKAPIUtils;
 
 public class ClassInspector {
 	public static void inspect(Class c) {
 		//Annotation
-		Utils.syslog("Class.getAnnotations:");
+		JDKAPIUtils.syslog("Class.getAnnotations:");
 		for(Annotation anno : c.getAnnotations()) {
-			Utils.syslog("	" + anno);
+			JDKAPIUtils.syslog("	" + anno);
 		}
-		Utils.syslog("Class.getDeclaredAnnotations:");
+		JDKAPIUtils.syslog("Class.getDeclaredAnnotations:");
 		for(Annotation anno : c.getDeclaredAnnotations()) {
-			Utils.syslog("	" + anno);
+			JDKAPIUtils.syslog("	" + anno);
 		}
-		Utils.syslog("Class.getCanonicalName:\n	" + c.getCanonicalName());
-		Utils.syslog("Class.getComponentType:\n	" + c.getComponentType());
+		JDKAPIUtils.syslog("Class.getCanonicalName:\n	" + c.getCanonicalName());
+		JDKAPIUtils.syslog("Class.getComponentType:\n	" + c.getComponentType());
 		
 		//c.getConstructor(parameterTypes);
 		
-		Utils.syslog("Class.getConstructors: ");
+		JDKAPIUtils.syslog("Class.getConstructors: ");
 		for(Constructor cons : c.getConstructors()) {
-			Utils.syslog("	" + cons);
+			JDKAPIUtils.syslog("	" + cons);
 		}
 		
-		Utils.syslog("Class.getDeclaredClasses: ");
+		JDKAPIUtils.syslog("Class.getDeclaredClasses: ");
 		for(Class cls : c.getDeclaredClasses()) {
-			Utils.syslog("	" + cls);
+			JDKAPIUtils.syslog("	" + cls);
 		}
 		
 		//c.getDeclaredConstructor(parameterTypes);
 		
-		Utils.syslog("Class.getDeclaredConstructors: ");
+		JDKAPIUtils.syslog("Class.getDeclaredConstructors: ");
 		for(Constructor cons : c.getDeclaredConstructors()) {
-			Utils.syslog("	" + cons);
+			JDKAPIUtils.syslog("	" + cons);
 		}
 		
-		Utils.syslog("Class.getDeclaredFields: ");
+		JDKAPIUtils.syslog("Class.getDeclaredFields: ");
 		for(Field field : c.getDeclaredFields()) {
-			Utils.syslog("	" + field);
+			JDKAPIUtils.syslog("	" + field);
 		}
 		
 		//c.getField(name);
-		Utils.syslog("Class.getFields: ");
+		JDKAPIUtils.syslog("Class.getFields: ");
 		for(Field field : c.getFields()) {
-			Utils.syslog("	" + field);
+			JDKAPIUtils.syslog("	" + field);
 		}
 
 		//c.getDeclaredMethod(name, parameterTypes);
-		Utils.syslog("Class.getDeclaredMethods: ");
+		JDKAPIUtils.syslog("Class.getDeclaredMethods: ");
 		for(Method method : c.getDeclaredMethods()) {
-			Utils.syslog("	" + method);
+			JDKAPIUtils.syslog("	" + method);
 		}
 
 		//c.getMethod(name, parameterTypes);
-		Utils.syslog("Class.getMethods: ");
+		JDKAPIUtils.syslog("Class.getMethods: ");
 		for(Method method : c.getMethods()) {
-			Utils.syslog("	" + method);
+			JDKAPIUtils.syslog("	" + method);
 		}
 		
-		Utils.syslog("Class.getDeclaringClass:\n	" + c.getDeclaringClass());
+		JDKAPIUtils.syslog("Class.getDeclaringClass:\n	" + c.getDeclaringClass());
 		
-		Utils.syslog("Class.getEnclosingClass:\n	" + c.getEnclosingClass());
+		JDKAPIUtils.syslog("Class.getEnclosingClass:\n	" + c.getEnclosingClass());
 		
-		Utils.syslog("Class.getEnclosingConstructor:\n	" + c.getEnclosingConstructor());
-		Utils.syslog("Class.getEnclosingMethod:\n	" + c.getEnclosingMethod());
+		JDKAPIUtils.syslog("Class.getEnclosingConstructor:\n	" + c.getEnclosingConstructor());
+		JDKAPIUtils.syslog("Class.getEnclosingMethod:\n	" + c.getEnclosingMethod());
 		
 		
-		Utils.syslog("Class.getGenericInterfaces: ");
+		JDKAPIUtils.syslog("Class.getGenericInterfaces: ");
 		for(Type type : c.getGenericInterfaces()) {
-			Utils.syslog("	" + type);
+			JDKAPIUtils.syslog("	" + type);
 		}
 
-		Utils.syslog("Class.getGenericSuperclass:\n	" + c.getGenericSuperclass());
-		Utils.syslog("Class.getSuperclass:\n	" + c.getSuperclass());
+		JDKAPIUtils.syslog("Class.getGenericSuperclass:\n	" + c.getGenericSuperclass());
+		JDKAPIUtils.syslog("Class.getSuperclass:\n	" + c.getSuperclass());
 
-		Utils.syslog("Class.getInterfaces: ");
+		JDKAPIUtils.syslog("Class.getInterfaces: ");
 		for(Type type : c.getInterfaces()) {
-			Utils.syslog("	" + type);
+			JDKAPIUtils.syslog("	" + type);
 		}
 		
-		Utils.syslog("Class.getModifiers:\n	" + c.getModifiers());
+		JDKAPIUtils.syslog("Class.getModifiers:\n	" + c.getModifiers());
 
-		Utils.syslog("Class.getSigners: ");
+		JDKAPIUtils.syslog("Class.getSigners: ");
 		Object[] signers = c.getSigners();
 		if(null != signers) {
 		  for(Object obj : signers) {
-			  Utils.syslog("	" + obj);
+			  JDKAPIUtils.syslog("	" + obj);
 	  	}
 		}
 		
-		Utils.syslog("Class.getTypeParameters: ");
+		JDKAPIUtils.syslog("Class.getTypeParameters: ");
 		for(TypeVariable type : c.getTypeParameters()) {
-			Utils.syslog("	" + type);
+			JDKAPIUtils.syslog("	" + type);
 		}
 		
-		Utils.syslog("Class.isAssignableFrom Flight:\n	" + c.isAssignableFrom(ReflectMisc.Flight.class));
-		Utils.syslog("Class.isSynthetic:\n	" + c.isSynthetic());
+		JDKAPIUtils.syslog("Class.isAssignableFrom Flight:\n	" + c.isAssignableFrom(ReflectMisc.Flight.class));
+		JDKAPIUtils.syslog("Class.isSynthetic:\n	" + c.isSynthetic());
 	}
 	
 	public static void main(String[] args) {

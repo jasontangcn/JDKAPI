@@ -2,7 +2,7 @@ package com.fairchild.jdkapi.reflect;
 
 import java.lang.reflect.Field;
 
-import com.fairchild.jdkapi.Utils;
+import com.fairchild.jdkapi.JDKAPIUtils;
 
 public class SetFieldAccessible {
 	public static class SetFieldAccessibleInnerClass {
@@ -22,6 +22,6 @@ public class SetFieldAccessible {
 		Class c = SetFieldAccessibleInnerClass.class;
 		Field nameField = c.getDeclaredField("name");
 		nameField.setAccessible(true);
-		Utils.syslog(nameField.get(o));
+		JDKAPIUtils.syslog(nameField.get(o));
 	}
 }

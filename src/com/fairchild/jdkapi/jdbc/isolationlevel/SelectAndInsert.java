@@ -10,12 +10,12 @@ import com.fairchild.jdkapi.jdbc.SelectRunnable;
 import com.fairchild.jdkapi.jdbc.SimpleAccountResultSetCallbackHandler;
 import com.fairchild.jdkapi.jdbc.UpdateRunnable;
 
-public class SELECT_UPDATE {
+public class SelectAndInsert {
 	public static void main(String[] args) throws InterruptedException {
 		Object lock = new Object();
-		Thread updateThread = new Thread(new UpdateRunnable(IsolationLevelTestSQLs.UPDATE_ACCOUNT_SQL, Connection.TRANSACTION_READ_UNCOMMITTED, lock), "UpdateThread");
-		Thread selectThread = new Thread(new SelectRunnable(IsolationLevelTestSQLs.SELECT_ACCOUNT_SQL, Connection.TRANSACTION_SERIALIZABLE, new SimpleAccountResultSetCallbackHandler(), lock), "SelectThread");
+		Thread insertThread = new Thread(new UpdateRunnable(IsolationLevelTestSQLs.INSERT_ACCOUNT_SQL, Connection.TRANSACTION_SERIALIZABLE, lock), "InsertThread");
+		Thread selectThread = new Thread(new SelectRunnable(IsolationLevelTestSQLs.SELECT_ACCOUNT_SQL, Connection.TRANSACTION_REPEATABLE_READ, new SimpleAccountResultSetCallbackHandler(), lock), "SelectThread");
 		selectThread.start();
-		updateThread.start();
+		insertThread.start();
 	}
 }

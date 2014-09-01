@@ -9,7 +9,7 @@ import java.sql.Connection;
 import com.fairchild.jdkapi.jdbc.SelectRunnable;
 import com.fairchild.jdkapi.jdbc.SimpleAccountResultSetCallbackHandler;
 
-public class SELECT_SELECT {
+public class SelectAndSelect {
 	public static void main(String[] args) throws InterruptedException {
 		Object lock = new Object();
 		Thread selectThread1 = new Thread(new SelectRunnable(IsolationLevelTestSQLs.SELECT_ACCOUNT_SQL, Connection.TRANSACTION_SERIALIZABLE, new SimpleAccountResultSetCallbackHandler(), lock), "SelectThread1");

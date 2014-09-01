@@ -8,7 +8,7 @@ import java.sql.Connection;
 
 import com.fairchild.jdkapi.jdbc.UpdateRunnable;
 
-public class INSERT_INSERT {
+public class InsertAndInsert {
 	public static void main(String[] args) throws InterruptedException {
 		Object lock = new Object();
 		Thread insertThread1 = new Thread(new UpdateRunnable(IsolationLevelTestSQLs.INSERT_ACCOUNT_SQL, Connection.TRANSACTION_SERIALIZABLE, lock), "InsertThread1");

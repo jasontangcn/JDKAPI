@@ -3,7 +3,7 @@ package com.fairchild.jdkapi.thread.selfrun;
 public class RunnableTestClassTest {
 	public static void main(String[] args) {
 		RunnableTestClass testClassObj = new RunnableTestClass();
-		Thread testClassTreahd = new Thread(testClassObj);
+		Thread testClassThread = new Thread(testClassObj);
 		testClassThread.start();
 
 		System.out.println("Enter try block.");
@@ -19,18 +19,18 @@ public class RunnableTestClassTest {
 			long startTime = System.currentTimeMillis();
 			Thread.sleep(1000);
 			System.out.println(System.currentTimeMillis() - startTime);
-			System.out.println("AAAAA-AAAAA-AAAAA-AAAAA-AAA");
+			System.out.println("AAAAA");
 
 			startTime = System.currentTimeMillis();
 			// Thread.currentThread().sleep(1000);
 			System.out.println(System.currentTimeMillis() - startTime);
-			System.out.println("BBBBB-BBBBB-BBBBB-BBBBB-BBB");
+			System.out.println("BBBBB");
 
 			// Thread.currentThread().sleep(10000);
 			// testClassThread.sleep(10000);
 			// Thread.currentThread().sleep(10000);
 			// Thread.sleep(1000);
-			System.out.println("CCCCC-CCCCC-CCCCC-CCCCC-CCC");
+			System.out.println("CCCCC");
 			// testClassThread.sleep(3000);
 		} catch (InterruptedException e) {
 		}

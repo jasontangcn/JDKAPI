@@ -9,9 +9,9 @@ import java.util.ArrayList;
  * 实现的功能：
  * 总体来说就是实现对Pool中DBConnection的管理，而DBConnection是对java.sql.Connection的封装。
  * 1、Pool初始化。
- *    DBConnectionPool(final int initialCapacity, final int maxCapacity, final String driverName, final String username, final String password)
+ *    DBConnectionPool(int initialCapacity, int maxCapacity, long waitingTime, String driverName, String username, String password)
  *    根据driverName, username, password可以获得Connetion。
- *    根据initialSize初始化一个ConnectionPool。
+ *    根据initialCapacity初始化一个ConnectionPool。
  * 2、提供释放Connection的能力。
  * 3、提供获得Connetion的能力。
 
@@ -32,7 +32,7 @@ public class DBConnectionPool extends Object {
 		// 处理逻辑：
 		// 1、initialCapacity必须大于等于1
 		// 2、maxCapacity必须大于等于1
-		// 3、poolInitialSize必须小于等于poolMaxSize
+		// 3、initialCapacity必须小于等于maxCapacity
 		// 4、关于driverName和dbURL的处理逻辑。
 		// 这里我限定：driverName和dbURL都不能为NULL。
 		// 我觉得更好的办法：设置一个默认driverName和dbURL，当传递值为NULL时，使用默认值。
@@ -54,8 +54,7 @@ public class DBConnectionPool extends Object {
 	}
 
 	/*
-	 * 理论上应该加上synchronized，以防止其它线程竞争。
-	 * 不过由于修饰符为private，无法调用，所以可以省略synchronized。
+	 * 理论上应该加上synchronized，以防止其它线程竞争。 不过由于修饰符为private，无法调用，所以可以省略synchronized。
 	 */
 	private Connection createDBConnection() {
 		try {
@@ -103,8 +102,7 @@ public class DBConnectionPool extends Object {
 
 	public synchronized Connection getDBConnection() {
 		/*
-		 * 功能描述： 
-		 * 1、遍历Pool，寻找空闲并且使用次数没有达到最大值的DBConnection。
+		 * 功能描述： 1、遍历Pool，寻找空闲并且使用次数没有达到最大值的DBConnection。
 		 * 2、如果使用次数达到最大值，就删除该DBConnection。
 		 * 3、如果没有达到maxCapacity，那么就向Pool中添加DBConnection。
 		 * 4、如果没有Pool已经满了，并且没有空闲的DBConnection，那么就等待直到有可用的DBConnection。
@@ -150,10 +148,10 @@ public class DBConnectionPool extends Object {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return getDBConnection();
 	}
-	
+
 	public void shutdown() {
 		for (int i = 0; i < dbConnections.size(); i++) {
 			DBConnection dbConnection = (DBConnection) dbConnections.get(i);
@@ -165,6 +163,7 @@ public class DBConnectionPool extends Object {
 	// 上面的方法中，我们需要注意一个问题：
 	// getDBConnection是一个synchronized方法。
 	// 自然，在执行过程中，调用getDBConnection的线程获得对象级互斥锁。
-	// 那么这时，我们是否可以正常使用从它的成员变量connections中获得的Connection(对象引用)， 答案是肯定的，因为我们不需要操作DBConnectionPool对象。
+	// 那么这时，我们是否可以正常使用从它的成员变量connections中获得的Connection(对象引用)，
+	// 答案是肯定的，因为我们不需要操作DBConnectionPool对象。
 	//
 }

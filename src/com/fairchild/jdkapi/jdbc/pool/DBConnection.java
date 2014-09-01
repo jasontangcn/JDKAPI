@@ -32,7 +32,7 @@ class DBConnection implements InvocationHandler, Serializable {
 	public Connection getJDBCConnection() {
 		return this.jdbcConnection;
 	}
-	
+
 	public Connection getConnectionProxy() {
 		Class[] interfaces = { java.sql.Connection.class };
 		Connection connProxy = (Connection) Proxy.newProxyInstance(jdbcConnection.getClass().getClassLoader(), interfaces, this);

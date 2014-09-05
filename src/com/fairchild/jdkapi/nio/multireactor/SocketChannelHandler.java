@@ -2,7 +2,7 @@
  * Created on Jun 23, 2005
  *
  */
-package com.fairchild.jdkapi.nio.reactor;
+package com.fairchild.jdkapi.nio.multireactor;
 
 /**
  * @author TomHornson@hotmail.com
@@ -11,36 +11,32 @@ package com.fairchild.jdkapi.nio.reactor;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 
 import com.fairchild.jdkapi.nio.NIOConstants;
-import com.fairchild.jdkapi.nio.multireactor.ResizableByteBuffer;
 
-public class SocketReadHandler implements Runnable {
+public class SocketChannelHandler implements Runnable {
 	private ByteBuffer output = ByteBuffer.wrap("Handshake completed.".getBytes(NIOConstants.CHARSET));
 
 	public static final int MAX_INPUT_BUFF = 1024;
 
 	private final SocketChannel socketChannel;
-	private final SelectionKey selectionKey;
+	private final SelectionKey selectionkey;
 
 	private ResizableByteBuffer input = new ResizableByteBuffer();
-	private ByteBuffer inputBuff = ByteBuffer.allocateDirect(MAX_INPUT_BUFF);
+	private ByteBuffer inputBuffer = ByteBuffer.allocateDirect(MAX_INPUT_BUFF);
 
 	public static final int READING = 0, SENDING = 1;
 	private int state = READING;
 
-	public SocketReadHandler(Selector selector, SocketChannel socketChannel) throws IOException {
+	public SocketChannelHandler(Reactor reactor, SocketChannel socketChannel) throws IOException {
 		this.socketChannel = socketChannel;
 		socketChannel.configureBlocking(false);
-		selectionKey = socketChannel.register(selector, 0);
-		// 将SelectionKey绑定为本Handler下一步有事件触发时，将调用本类的run方法
-		// 参看dispatch(SelectionKey selectionKey)
-		selectionKey.attach(this);
-		// 同时将SelectionKey标记为可读，以便读取
-		selectionKey.interestOps(SelectionKey.OP_READ);
-		selector.wakeup();
+		/*
+		 * if selector(a Selector) is blocked on other thread because of select() and so on, then here will block. 
+		 * It causes dead-lock.
+		 */
+		selectionkey = reactor.register(socketChannel, SelectionKey.OP_READ, this);
 	}
 
 	private boolean inputIsComplete() {
@@ -83,21 +79,21 @@ public class SocketReadHandler implements Runnable {
 	}
 
 	void read() throws IOException {
-		inputBuff.clear();
-		socketChannel.read(inputBuff);
-		input.put(inputBuff);
+		inputBuffer.clear();
+		socketChannel.read(inputBuffer);
+		input.put(inputBuffer);
 
 		if (inputIsComplete()) {
 			process();
 			state = SENDING;
 			// Normally also do first write now
-			selectionKey.interestOps(SelectionKey.OP_WRITE);
+			selectionkey.interestOps(SelectionKey.OP_WRITE);
 		}
 	}
 
 	void send() throws IOException {
 		/*
-		 * TODO: may be ,there is a bug because of the dispersion of the buffs.
+		 * TODO: May be ,there is a bug because of the dispersion of the buffs.
 		 */
 		socketChannel.write((ByteBuffer) input.getBuffer().flip());
 		socketChannel.write(output);
@@ -110,7 +106,7 @@ public class SocketReadHandler implements Runnable {
 	}
 
 	private void doEndingWork() {
-		selectionKey.cancel();
+		selectionkey.cancel();
 		try {
 			if ((null != socketChannel) && socketChannel.isOpen())
 				socketChannel.close();

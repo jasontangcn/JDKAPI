@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.security.jaas;
+package com.fruits.jdkapi.security.jaas;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -61,7 +61,7 @@ import org.xml.sax.InputSource;
  * 
  * <pre>
  * Sample {
- *   com.fairchild.jdkapi.security.jaas.ExampleLoginModule required debug=true userFile="users.xml" groupFile="groups.xml";
+ *   com.fruits.jdkapi.security.jaas.ExampleLoginModule required debug=true userFile="users.xml" groupFile="groups.xml";
  * };
  * </pre>
  * <p>
@@ -69,7 +69,7 @@ import org.xml.sax.InputSource;
  * 
  * @see java.security.Principal
  * @see javax.security.auth.Subject
- * @see com.fairchild.jdkapi.security.jaas.ExamplePrincipal
+ * @see com.fruits.jdkapi.security.jaas.ExamplePrincipal
  */
 public class ExampleLoginModule implements LoginModule {
 	private Subject subject;

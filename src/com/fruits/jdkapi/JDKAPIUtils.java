@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi;
+package com.fruits.jdkapi;
 
 public class JDKAPIUtils {
 	public static void syslog(Object o) {

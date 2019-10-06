@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.jdbc;
+package com.fruits.jdkapi.jdbc;
 
 public class ConnectionStatementtResultProperties {
 	private int CONNECTION_TRANSACTION_ISOLATIONLEVEL = -1;

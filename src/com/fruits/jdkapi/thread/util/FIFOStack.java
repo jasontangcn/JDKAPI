@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.thread.util;
+package com.fruits.jdkapi.thread.util;
 
 public class FIFOStack {
 	private Object[] queue;

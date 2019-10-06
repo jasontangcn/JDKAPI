@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.security.jaas;
+package com.fruits.jdkapi.security.jaas;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -54,25 +54,25 @@ import org.xml.sax.InputSource;
  * <?xml version="1.0"?>
 	<policy>
 		<grant codebase="file:/D:/JaasExample.jar">
-			<principal classname="com.fairchild.jdkapi.security.jaas.ExamplePrincipal" name="users">
-				<permission classname="com.fairchild.jdkapi.security.jaas.ResourcePermission" 
-				            name="com.fairchild.jdkapi.security.jaas.UserProfile"
+			<principal classname="com.fruits.jdkapi.security.jaas.ExamplePrincipal" name="users">
+				<permission classname="com.fruits.jdkapi.security.jaas.ResourcePermission" 
+				            name="com.fruits.jdkapi.security.jaas.UserProfile"
 				            actions="create" /> 
-				<permission classname="com.fairchild.jdkapi.security.jaas.ResourcePermission" 
-				            name="com.fairchild.jdkapi.security.jaas.UserProfile"
+				<permission classname="com.fruits.jdkapi.security.jaas.ResourcePermission" 
+				            name="com.fruits.jdkapi.security.jaas.UserProfile"
 				            actions="write,delete,read" 
 							relationship="owner" />			            						
-				<permission classname="com.fairchild.jdkapi.security.jaas.ResourcePermission" 
-				            name="com.fairchild.jdkapi.security.jaas.UserProfile"
+				<permission classname="com.fruits.jdkapi.security.jaas.ResourcePermission" 
+				            name="com.fruits.jdkapi.security.jaas.UserProfile"
 				            actions="read" 
 							relationship="janesManager" />			            									            
 			</principal>
 		</grant>
 		
 		<grant codebase="file:/D:/JaasExample/*">
-			<principal classname="com.fairchild.jdkapi.security.jaas.ExamplePrincipal" name="administrators">
-				<permission classname="com.fairchild.jdkapi.security.jaas.ResourcePermission" 
-				            name="com.fairchild.jdkapi.security.jaas.UserProfile"
+			<principal classname="com.fruits.jdkapi.security.jaas.ExamplePrincipal" name="administrators">
+				<permission classname="com.fruits.jdkapi.security.jaas.ResourcePermission" 
+				            name="com.fruits.jdkapi.security.jaas.UserProfile"
 				            actions="create,delete,read,write,execute" /> 
 			</principal>
 		</grant>
@@ -101,7 +101,7 @@ import org.xml.sax.InputSource;
  * 	public Auction() {
  *     Permission permission = 
  *            new DefaultResourceActionPermission(
- *                                 "com.fairchild.jdkapi.security.jaas.Auction", 
+ *                                 "com.fruits.jdkapi.security.jaas.Auction", 
  *                                 "create");    
  *     AccessController.checkPermission(permission);
  *  } 
@@ -110,7 +110,7 @@ import org.xml.sax.InputSource;
  * public void setName(String name) {
  *    Permission permission = 
  *            new DefaultResourceActionPermission(
- *                                  "com.fairchild.jdkapi.security.jaas.Auction", 
+ *                                  "com.fruits.jdkapi.security.jaas.Auction", 
  *                                  "write", this); 
  *    AccessController.checkPermission(permission);
  *    this.name = name;
@@ -127,7 +127,7 @@ import org.xml.sax.InputSource;
  * public void setAccepted(boolean flag) {
  *    Permission permission = 
  *            new DefaultResourceActionPermission(
- *                                  "com.fairchild.jdkapi.security.jaas.Bid", 
+ *                                  "com.fruits.jdkapi.security.jaas.Bid", 
  *                                  "accept", this); 
  *    AccessController.checkPermission(permission);
  * }
@@ -150,7 +150,7 @@ import org.xml.sax.InputSource;
  * <p>
  * By defualt, this class looks for an XML file named ResourcePolicy.xml in the
  * current directory. The system property,
- * <code>com.fairchild.jdkapi.security.jaas.policy</code>, may be used to specify another file.
+ * <code>com.fruits.jdkapi.security.jaas.policy</code>, may be used to specify another file.
  * 
  * @see javax.security.auth.Policy
  */
@@ -172,14 +172,14 @@ public class XMLPolicyFile extends javax.security.auth.Policy {
 	/**
 	 * Creates a DOM tree document from the default XML file or from the file
 	 * specified by the system property,
-	 * <code>com.fairchild.jdkapi.security.jaas.policy</code>. This DOM tree
+	 * <code>com.fruits.jdkapi.security.jaas.policy</code>. This DOM tree
 	 * document is then used by the <code>getPermissions()</code> in searching
 	 * for permissions.
 	 * 
 	 * @see javax.security.auth.Policy#refresh()
 	 */
 	public void refresh() {
-		String file = System.getProperty("com.fairchild.jdkapi.security.jaas.policy");
+		String file = System.getProperty("com.fruits.jdkapi.security.jaas.policy");
 		if (file != null)
 			this.filename = file;
 

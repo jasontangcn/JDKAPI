@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.serialization;
+package com.fruits.jdkapi.serialization;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

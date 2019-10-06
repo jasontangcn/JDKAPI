@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.nio.socket;
+package com.fruits.jdkapi.nio.socket;
 
 public class EventAdapter implements ServerListener {
 	public void onError(String error) {

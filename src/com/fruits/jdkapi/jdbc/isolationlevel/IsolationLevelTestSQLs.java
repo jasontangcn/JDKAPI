@@ -2,7 +2,7 @@
  * Created on Apr 9, 2005
  * Author: TomHornson(at)hotmail.com
  */
-package com.fairchild.jdkapi.jdbc.isolationlevel;
+package com.fruits.jdkapi.jdbc.isolationlevel;
 
 public class IsolationLevelTestSQLs {
 	public static final String SELECT_ACCOUNT_SQL = "SELECT * FROM account WHERE ownerName = 'Louis'";

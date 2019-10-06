@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.regex;
+package com.fruits.jdkapi.regex;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

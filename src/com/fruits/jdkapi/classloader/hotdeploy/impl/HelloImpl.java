@@ -1,6 +1,6 @@
-package com.fairchild.jdkapi.classloader.hotdeploy.impl;
+package com.fruits.jdkapi.classloader.hotdeploy.impl;
 
-import com.fairchild.jdkapi.classloader.hotdeploy.Hello;
+import com.fruits.jdkapi.classloader.hotdeploy.Hello;
 
 public class HelloImpl implements Hello {
     public void sayHello() {

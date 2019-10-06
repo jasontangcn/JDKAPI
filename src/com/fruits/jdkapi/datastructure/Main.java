@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.datastructure;
+package com.fruits.jdkapi.datastructure;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.thread.threadlocal;
+package com.fruits.jdkapi.thread.threadlocal;
 
 public class ThreadIdTest extends Object implements Runnable {
 	private ThreadId threadId;

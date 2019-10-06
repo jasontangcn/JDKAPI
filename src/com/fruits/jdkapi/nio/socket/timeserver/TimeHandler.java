@@ -1,12 +1,12 @@
-package com.fairchild.jdkapi.nio.socket.timeserver;
+package com.fruits.jdkapi.nio.socket.timeserver;
 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import com.fairchild.jdkapi.nio.socket.EventAdapter;
-import com.fairchild.jdkapi.nio.socket.Request;
-import com.fairchild.jdkapi.nio.socket.Response;
+import com.fruits.jdkapi.nio.socket.EventAdapter;
+import com.fruits.jdkapi.nio.socket.Request;
+import com.fruits.jdkapi.nio.socket.Response;
 
 public class TimeHandler extends EventAdapter {
 	public TimeHandler() {

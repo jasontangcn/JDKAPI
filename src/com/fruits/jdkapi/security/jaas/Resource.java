@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.security.jaas;
+package com.fruits.jdkapi.security.jaas;
 
 import javax.security.auth.Subject;
 

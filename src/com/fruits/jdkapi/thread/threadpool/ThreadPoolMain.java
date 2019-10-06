@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.thread.threadpool;
+package com.fruits.jdkapi.thread.threadpool;
 
 public class ThreadPoolMain extends Object {
 	public static Runnable makeRunnable(final String name, final long delay) {

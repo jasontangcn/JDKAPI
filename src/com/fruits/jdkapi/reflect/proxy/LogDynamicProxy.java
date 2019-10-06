@@ -1,8 +1,8 @@
-package com.fairchild.jdkapi.reflect.proxy;
+package com.fruits.jdkapi.reflect.proxy;
 
 import java.lang.reflect.Proxy;
 
-import com.fairchild.jdkapi.reflect.ReflectMisc;
+import com.fruits.jdkapi.reflect.ReflectMisc;
 
 public class LogDynamicProxy {
 

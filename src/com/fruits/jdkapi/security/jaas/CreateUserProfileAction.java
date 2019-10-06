@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.security.jaas;
+package com.fruits.jdkapi.security.jaas;
 
 import java.security.PrivilegedAction;
 
@@ -23,7 +23,7 @@ public class CreateUserProfileAction implements PrivilegedAction {
 	 *                operations listed above.
 	 */
 	public Object run() {
-		return new com.fairchild.jdkapi.security.jaas.UserProfile();
+		return new com.fruits.jdkapi.security.jaas.UserProfile();
 	}
 
 }

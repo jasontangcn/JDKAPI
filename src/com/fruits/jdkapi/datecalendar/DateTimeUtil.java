@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.datecalendar;
+package com.fruits.jdkapi.datecalendar;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;

@@ -1,7 +1,7 @@
-package com.fairchild.jdkapi.nio.socket.timeserver;
+package com.fruits.jdkapi.nio.socket.timeserver;
 
-import com.fairchild.jdkapi.nio.socket.Notifier;
-import com.fairchild.jdkapi.nio.socket.Server;
+import com.fruits.jdkapi.nio.socket.Notifier;
+import com.fruits.jdkapi.nio.socket.Server;
 
 public class Main {
 

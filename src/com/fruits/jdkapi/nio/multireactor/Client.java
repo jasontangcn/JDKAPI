@@ -2,7 +2,7 @@
  * Created on 2005-9-16
  *
  */
-package com.fairchild.jdkapi.nio.multireactor;
+package com.fruits.jdkapi.nio.multireactor;
 
 /**
  * @author TomHornson@hotmail.com
@@ -17,7 +17,7 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 
-import com.fairchild.jdkapi.nio.NIOConstants;
+import com.fruits.jdkapi.nio.NIOConstants;
 
 public class Client {
 	public static void main(String[] args) throws IOException {

@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.security.jaas;
+package com.fruits.jdkapi.security.jaas;
 
 import java.io.BufferedReader;
 import java.io.IOException;

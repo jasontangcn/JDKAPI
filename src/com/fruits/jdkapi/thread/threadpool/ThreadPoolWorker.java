@@ -1,6 +1,6 @@
-package com.fairchild.jdkapi.thread.threadpool;
+package com.fruits.jdkapi.thread.threadpool;
 
-import com.fairchild.jdkapi.thread.util.SynchronizedStack;
+import com.fruits.jdkapi.thread.util.SynchronizedStack;
 
 public class ThreadPoolWorker {
 	private static int nextWorkID = 0;

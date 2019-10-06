@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.security.jaas;
+package com.fruits.jdkapi.security.jaas;
 
 import java.security.AccessController;
 import java.security.Permission;
@@ -12,19 +12,19 @@ public class UserProfile implements Resource {
 	private String owner = JAASConstants.USERNAME_JANE;
 
 	public UserProfile() {
-		Permission permission = new com.fairchild.jdkapi.security.jaas.ResourcePermission("com.fairchild.jdkapi.security.jaas.UserProfile", "create");
+		Permission permission = new com.fruits.jdkapi.security.jaas.ResourcePermission("com.fruits.jdkapi.security.jaas.UserProfile", "create");
 		AccessController.checkPermission(permission);
 	}
 
 	public void setUserName(String userName) {
-		Permission permission = new com.fairchild.jdkapi.security.jaas.ResourcePermission("com.fairchild.jdkapi.security.jaas.UserProfile", "write", this);
+		Permission permission = new com.fruits.jdkapi.security.jaas.ResourcePermission("com.fruits.jdkapi.security.jaas.UserProfile", "write", this);
 		AccessController.checkPermission(permission);
 
 		this.userName = userName;
 	}
 
 	public String getUserName() {
-		Permission permission = new com.fairchild.jdkapi.security.jaas.ResourcePermission("com.fairchild.jdkapi.security.jaas.UserProfile", "read", this);
+		Permission permission = new com.fruits.jdkapi.security.jaas.ResourcePermission("com.fruits.jdkapi.security.jaas.UserProfile", "read", this);
 		AccessController.checkPermission(permission);
 
 		return userName;
@@ -35,7 +35,7 @@ public class UserProfile implements Resource {
 	}
 
 	public void setOwner(String newOwner) {
-		Permission permission = new com.fairchild.jdkapi.security.jaas.ResourcePermission("com.fairchild.jdkapi.security.jaas.UserProfile", "write", this);
+		Permission permission = new com.fruits.jdkapi.security.jaas.ResourcePermission("com.fruits.jdkapi.security.jaas.UserProfile", "write", this);
 		AccessController.checkPermission(permission);
 
 		this.owner = newOwner;

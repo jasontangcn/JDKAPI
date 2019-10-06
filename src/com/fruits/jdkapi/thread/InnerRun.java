@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.thread;
+package com.fruits.jdkapi.thread;
 
 public class InnerRun {
 	private Thread internalThread;

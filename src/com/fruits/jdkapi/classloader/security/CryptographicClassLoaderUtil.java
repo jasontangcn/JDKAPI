@@ -1,6 +1,6 @@
-package com.fairchild.jdkapi.classloader.security;
+package com.fruits.jdkapi.classloader.security;
 
-import com.fairchild.jdkapi.io.FileUtil;
+import com.fruits.jdkapi.io.FileUtil;
 
 public class CryptographicClassLoaderUtil {
 

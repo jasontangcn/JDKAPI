@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.reflect;
+package com.fruits.jdkapi.reflect;
 
 public class Reflection {
 

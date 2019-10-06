@@ -1,8 +1,8 @@
-package com.fairchild.jdkapi.reflect;
+package com.fruits.jdkapi.reflect;
 
 import java.lang.reflect.Field;
 
-import com.fairchild.jdkapi.JDKAPIUtils;
+import com.fruits.jdkapi.JDKAPIUtils;
 
 public class SetFieldAccessible {
 	public static class SetFieldAccessibleInnerClass {

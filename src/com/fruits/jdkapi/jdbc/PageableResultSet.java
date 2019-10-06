@@ -2,7 +2,7 @@
  * Created on 2004-11-1
  *
  */
-package com.fairchild.jdkapi.jdbc;
+package com.fruits.jdkapi.jdbc;
 
 import java.sql.ResultSet;
 

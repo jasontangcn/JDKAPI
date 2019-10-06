@@ -1,10 +1,10 @@
-package com.fairchild.jdkapi.reference;
+package com.fruits.jdkapi.reference;
 
 import java.lang.ref.PhantomReference;
 import java.lang.ref.ReferenceQueue;
 
-import com.fairchild.jdkapi.JDKAPIUtils;
-import com.fairchild.jdkapi.reference.ReferenceMisc.RefInnerClass;
+import com.fruits.jdkapi.JDKAPIUtils;
+import com.fruits.jdkapi.reference.ReferenceMisc.RefInnerClass;
 
 public class PhantomReferenceSubclass extends PhantomReference {
 	private String name;

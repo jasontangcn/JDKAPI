@@ -2,7 +2,7 @@
  * Created on Jun 23, 2005
  *
  */
-package com.fairchild.jdkapi.nio.samples;
+package com.fruits.jdkapi.nio.samples;
 
 /**
  * @author TomHornson@hotmail.com

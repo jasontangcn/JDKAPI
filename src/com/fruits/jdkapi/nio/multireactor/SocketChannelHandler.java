@@ -2,7 +2,7 @@
  * Created on Jun 23, 2005
  *
  */
-package com.fairchild.jdkapi.nio.multireactor;
+package com.fruits.jdkapi.nio.multireactor;
 
 /**
  * @author TomHornson@hotmail.com
@@ -13,7 +13,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 
-import com.fairchild.jdkapi.nio.NIOConstants;
+import com.fruits.jdkapi.nio.NIOConstants;
 
 public class SocketChannelHandler implements Runnable {
 	private ByteBuffer output = ByteBuffer.wrap("Handshake completed.".getBytes(NIOConstants.CHARSET));

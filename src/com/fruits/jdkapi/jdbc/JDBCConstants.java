@@ -2,7 +2,7 @@
  * Created on Apr 10, 2005
  * Author: TomHornson(at)hotmail.com
  */
-package com.fairchild.jdkapi.jdbc;
+package com.fruits.jdkapi.jdbc;
 
 public class JDBCConstants {
 	public static final String INITIAL_CONTEXT_FACTORY = "com.apusic.naming.jndi.CNContextFactory";

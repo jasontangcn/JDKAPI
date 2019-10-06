@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.jdbc;
+package com.fruits.jdkapi.jdbc;
 
 import java.io.Serializable;
 import java.util.*;

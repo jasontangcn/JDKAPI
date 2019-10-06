@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.thread.selfrun;
+package com.fruits.jdkapi.thread.selfrun;
 
 public class RunnableTestClass extends Object implements Runnable {
 	public void run() {

@@ -1,7 +1,7 @@
 /*
  * Created on 2004-10-24
  */
-package com.fairchild.jdkapi.thread.util;
+package com.fruits.jdkapi.thread.util;
 
 /**
  * @author TomHornson@hotmail.com

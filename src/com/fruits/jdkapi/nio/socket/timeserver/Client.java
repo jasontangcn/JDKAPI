@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.nio.socket.timeserver;
+package com.fruits.jdkapi.nio.socket.timeserver;
 
 import java.net.Socket;
 import java.io.*;

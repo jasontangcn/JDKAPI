@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.io;
+package com.fruits.jdkapi.io;
 
 import java.io.File;
 import java.io.FileInputStream;

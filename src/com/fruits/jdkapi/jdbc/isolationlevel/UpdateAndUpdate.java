@@ -2,11 +2,11 @@
  * Created on Apr 9, 2005
  * Author: TomHornson(at)hotmail.com
  */
-package com.fairchild.jdkapi.jdbc.isolationlevel;
+package com.fruits.jdkapi.jdbc.isolationlevel;
 
 import java.sql.Connection;
 
-import com.fairchild.jdkapi.jdbc.UpdateRunnable;
+import com.fruits.jdkapi.jdbc.UpdateRunnable;
 
 public class UpdateAndUpdate {
 	public static void main(String[] args) throws InterruptedException {

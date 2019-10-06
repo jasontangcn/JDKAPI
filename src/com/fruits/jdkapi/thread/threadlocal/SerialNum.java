@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.thread.threadlocal;
+package com.fruits.jdkapi.thread.threadlocal;
 
 public class SerialNum {
 	private int nextNumber = 0;

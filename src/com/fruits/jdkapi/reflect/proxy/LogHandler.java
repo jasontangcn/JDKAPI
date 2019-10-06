@@ -1,9 +1,9 @@
-package com.fairchild.jdkapi.reflect.proxy;
+package com.fruits.jdkapi.reflect.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-import com.fairchild.jdkapi.reflect.ReflectMisc.Action;
+import com.fruits.jdkapi.reflect.ReflectMisc.Action;
 
 
 class LogHandler implements InvocationHandler {

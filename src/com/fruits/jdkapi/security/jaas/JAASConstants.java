@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.security.jaas;
+package com.fruits.jdkapi.security.jaas;
 
 public class JAASConstants {
 	public static final String XML_POLICY_FILE_NAME = "ResourcePolicy.xml";

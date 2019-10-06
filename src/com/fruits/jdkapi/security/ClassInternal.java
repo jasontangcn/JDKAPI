@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.security;
+package com.fruits.jdkapi.security;
 
 import java.lang.reflect.Method;
 import java.net.URL;

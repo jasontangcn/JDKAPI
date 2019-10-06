@@ -2,7 +2,7 @@
  * Created on Jun 23, 2005
  *
  */
-package com.fairchild.jdkapi.nio.reactor;
+package com.fruits.jdkapi.nio.reactor;
 
 /**
  * @author TomHornson@hotmail.com
@@ -18,7 +18,7 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
-import com.fairchild.jdkapi.thread.threadpool.ThreadPoolManager;
+import com.fruits.jdkapi.thread.threadpool.ThreadPoolManager;
 
 public class Reactor implements Runnable {
 	final Selector selector;

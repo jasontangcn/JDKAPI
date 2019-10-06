@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.nio.socket;
+package com.fruits.jdkapi.nio.socket;
 
 import java.util.List;
 import java.util.LinkedList;

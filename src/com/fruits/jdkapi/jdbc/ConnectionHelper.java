@@ -2,7 +2,7 @@
  * Created on Apr 8, 2005
  * Author: TomHornson(at)hotmail.com
  */
-package com.fairchild.jdkapi.jdbc;
+package com.fruits.jdkapi.jdbc;
 
 import java.sql.Connection;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.thread.httpserver;
+package com.fruits.jdkapi.thread.httpserver;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +17,7 @@ import java.net.URLConnection;
 import java.net.Socket;
 import java.util.NoSuchElementException;
 
-import com.fairchild.jdkapi.thread.util.FIFOStack;
+import com.fruits.jdkapi.thread.util.FIFOStack;
 
 public class HttpWorker extends Object {
 	private static int nextWorkerID = 0;

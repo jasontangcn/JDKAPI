@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.nio.socket;
+package com.fruits.jdkapi.nio.socket;
 
 import java.nio.channels.SocketChannel;
 import java.nio.ByteBuffer;

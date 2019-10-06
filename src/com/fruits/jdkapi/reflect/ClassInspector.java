@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.reflect;
+package com.fruits.jdkapi.reflect;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 
-import com.fairchild.jdkapi.JDKAPIUtils;
+import com.fruits.jdkapi.JDKAPIUtils;
 
 public class ClassInspector {
 	public static void inspect(Class c) {

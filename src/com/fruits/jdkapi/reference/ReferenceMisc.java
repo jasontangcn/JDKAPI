@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.reference;
+package com.fruits.jdkapi.reference;
 
 public class ReferenceMisc {
 

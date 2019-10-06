@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.thread.selfrun;
+package com.fruits.jdkapi.thread.selfrun;
 
 /*
  * 实现的特殊功能:

@@ -2,7 +2,7 @@
  * Created on 2004-10-29
  *
  */
-package com.fairchild.jdkapi.jdbc;
+package com.fruits.jdkapi.jdbc;
 
 /**
  * @author TomHornson@hotmail.com

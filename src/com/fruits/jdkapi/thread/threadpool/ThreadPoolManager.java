@@ -1,6 +1,6 @@
-package com.fairchild.jdkapi.thread.threadpool;
+package com.fruits.jdkapi.thread.threadpool;
 
-import com.fairchild.jdkapi.thread.util.SynchronizedStack;
+import com.fruits.jdkapi.thread.util.SynchronizedStack;
 
 /*
  * ThreadPoolManager功能描述：生成、管理线程池中的线程。

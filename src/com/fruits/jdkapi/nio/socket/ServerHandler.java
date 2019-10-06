@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.nio.socket;
+package com.fruits.jdkapi.nio.socket;
 
 public class ServerHandler extends EventAdapter {
     public ServerHandler() {

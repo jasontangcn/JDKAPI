@@ -2,7 +2,7 @@
  * Created on 2005-9-21
  *
  */
-package com.fairchild.jdkapi.nio.multireactor;
+package com.fruits.jdkapi.nio.multireactor;
 
 import java.io.IOException;
 import java.nio.channels.SelectionKey;

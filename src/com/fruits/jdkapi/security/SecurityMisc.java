@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.security;
+package com.fruits.jdkapi.security;
 
 public class SecurityMisc {
 	public static interface InterfaceA {}

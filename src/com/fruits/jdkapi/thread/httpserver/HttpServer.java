@@ -1,4 +1,4 @@
-package com.fairchild.jdkapi.thread.httpserver;
+package com.fruits.jdkapi.thread.httpserver;
 
 import java.io.File;
 import java.io.BufferedWriter;
@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.net.ServerSocket;
 import java.io.IOException;
 
-import com.fairchild.jdkapi.thread.util.FIFOStack;
+import com.fruits.jdkapi.thread.util.FIFOStack;
 
 public class HttpServer extends Object {
 	private FIFOStack fifoStackIdleWorkers;

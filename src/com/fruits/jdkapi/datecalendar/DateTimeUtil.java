@@ -4,6 +4,10 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
+/**
+ * @author Jason Tang
+ */
+
 public class DateTimeUtil {
 	/**
 	 * Return current datetime string.

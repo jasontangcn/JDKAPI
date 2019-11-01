@@ -1,12 +1,10 @@
 /*
  * Created on 2005-9-16
- *
  */
 package com.fruits.jdkapi.nio;
 
 /**
- * @author TomHornson@hotmail.com
- *
+ * @author Jason Tang
  */
 import java.io.IOException;
 import java.net.InetAddress;
@@ -21,15 +19,15 @@ public class Client {
 	public static void main(String[] args) {
 		Charset charset = Charset.forName("UTF-8");
 		CharsetDecoder decoder = charset.newDecoder();
-		ByteBuffer buffer = ByteBuffer.allocateDirect(1024);
+		ByteBuffer bytes = ByteBuffer.allocateDirect(1024);
 		SocketChannel socketChannel = null;
 		try {
 			socketChannel = SocketChannel.open(new InetSocketAddress(InetAddress.getLocalHost(), 8000));
-			buffer.clear();
-			socketChannel.read(buffer);
-			buffer.flip();
-			CharBuffer charBuffer = decoder.decode(buffer);
-			System.out.println(charBuffer);
+			bytes.clear();
+			socketChannel.read(bytes);
+			bytes.flip();
+			CharBuffer buffer = decoder.decode(bytes);
+			System.out.println(new String(buffer.array()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

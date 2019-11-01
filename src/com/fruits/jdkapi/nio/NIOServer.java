@@ -1,11 +1,10 @@
 /*
  * Created on 2005-9-16
- *
  */
 package com.fruits.jdkapi.nio;
 
 /**
- * @author TomHornson@hotmail.com
+ * @author Jason Tang
  */
 import java.io.IOException;
 import java.net.InetAddress;
@@ -105,8 +104,7 @@ public class NIOServer {
 	}
 
 	public static void main(String[] args) throws Exception {
-		int port = 8000;
-		NIOServer svr = new NIOServer(InetAddress.getLocalHost(), port);
-		svr.startServe();
+		NIOServer server = new NIOServer(InetAddress.getLocalHost(), 8000);
+		server.startServe();
 	}
 }

@@ -17,7 +17,7 @@ import java.nio.channels.SocketChannel;
 import com.fruits.jdkapi.nio.NIOConstants;
 import com.fruits.jdkapi.nio.multireactor.ResizableByteBuffer;
 
-public class SocketReadHandler implements Runnable {
+public class SocketIOHandler implements Runnable {
 	private ByteBuffer output = ByteBuffer.wrap("Handshake completed.".getBytes(NIOConstants.CHARSET));
 
 	public static final int MAX_INPUT_BUFF = 1024;
@@ -26,39 +26,34 @@ public class SocketReadHandler implements Runnable {
 	private final SelectionKey selectionKey;
 
 	private ResizableByteBuffer input = new ResizableByteBuffer();
-	private ByteBuffer inputBuff = ByteBuffer.allocateDirect(MAX_INPUT_BUFF);
+	private ByteBuffer buf = ByteBuffer.allocateDirect(MAX_INPUT_BUFF);
 
 	public static final int READING = 0, SENDING = 1;
 	private int state = READING;
 
-	public SocketReadHandler(Selector selector, SocketChannel socketChannel) throws IOException {
+	public SocketIOHandler(Selector selector, SocketChannel socketChannel) throws IOException {
 		this.socketChannel = socketChannel;
 		socketChannel.configureBlocking(false);
 		selectionKey = socketChannel.register(selector, 0);
-		// 将SelectionKey绑定为本Handler下一步有事件触发时，将调用本类的run方法
-		// 参看dispatch(SelectionKey selectionKey)
 		selectionKey.attach(this);
-		// 同时将SelectionKey标记为可读，以便读取
 		selectionKey.interestOps(SelectionKey.OP_READ);
 		selector.wakeup();
 	}
 
-	private boolean inputIsComplete() {
-		ByteBuffer buff = input.getBuffer();
-		int size = buff.position();
+	private boolean inputCompleted() {
+		ByteBuffer buf = input.getBuffer();
+		int size = buf.position();
 		if (size >= 2) {
-			/*
-			 * TODO: Is there something wrong?
-			 */
-			char c1 = (char) buff.get(size - 1);
-			char c2 = (char) buff.get(size - 2);
+			// is there something wrong?
+			char c1 = (char) buf.get(size - 1);
+			char c2 = (char) buf.get(size - 2);
 			if (c1 == '\n' && c2 == '\r')
 				return true;
 		}
 		return false;
 	}
 
-	private boolean outputIsComplete() {
+	private boolean outputCompleted() {
 		return true;
 	}
 
@@ -66,7 +61,7 @@ public class SocketReadHandler implements Runnable {
 	}
 
 	/*
-	 * TODO: Apply ThreadPool.
+	 * TODO: use ThreadPool.
 	 */
 	public void run() {
 		try {
@@ -77,39 +72,35 @@ public class SocketReadHandler implements Runnable {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-			doEndingWork();
+			close();
 		} finally {
 		}
 	}
 
 	void read() throws IOException {
-		inputBuff.clear();
-		socketChannel.read(inputBuff);
-		input.put(inputBuff);
+		buf.clear();
+		socketChannel.read(buf);
+		input.put(buf);
 
-		if (inputIsComplete()) {
+		if (inputCompleted()) {
 			process();
 			state = SENDING;
-			// Normally also do first write now
+			// usually also do first write now
 			selectionKey.interestOps(SelectionKey.OP_WRITE);
 		}
 	}
 
 	void send() throws IOException {
-		/*
-		 * TODO: may be ,there is a bug because of the dispersion of the buffs.
-		 */
+		// TODO: may be , there is a bug because of the dispersion of the buffers.
 		socketChannel.write((ByteBuffer) input.getBuffer().flip());
 		socketChannel.write(output);
-		if (outputIsComplete()) {
-			/*
-			 * TODO: How to do ending work?
-			 */
-			doEndingWork();
+		if (outputCompleted()) {
+			// how to do ending work?
+			close();
 		}
 	}
 
-	private void doEndingWork() {
+	private void close() {
 		selectionKey.cancel();
 		try {
 			if ((null != socketChannel) && socketChannel.isOpen())

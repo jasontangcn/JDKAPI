@@ -16,6 +16,8 @@ import java.nio.channels.Selector;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.fruits.jdkapi.thread.threadpool.ThreadPoolManager;
+
 public class Reactor extends Thread {
 	private final Selector selector;
 	private volatile boolean waiting = false;
@@ -24,16 +26,15 @@ public class Reactor extends Thread {
 		this.selector = Selector.open();
 	}
 
-	private void waiting(boolean waiting) {
-		this.waiting = waiting;
-	}
-
 	public void run() {
 		try {
 			while (!Thread.interrupted()) {
+				
 				Printer.debug("[" + Thread.currentThread().getName() + "] " + " is selecting.");
+				
 				if (selector.select() > 0) {
 					Printer.debug("[" + Thread.currentThread().getName() + "] " + " got selected keys.");
+					
 					Set selectedKeys = selector.selectedKeys();
 					for (Iterator it = selectedKeys.iterator(); it.hasNext();)
 						dispatch((SelectionKey) (it.next()));
@@ -64,22 +65,36 @@ public class Reactor extends Thread {
 			}
 		}
 	}
+	
+	private final static ThreadPoolManager threadPool;
+	static {
+			try {
+				threadPool = new ThreadPoolManager(50);
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
+	}
 
 	private void dispatch(SelectionKey key) {
 		//It's an Acceptor or SocketChannelHandler
 		Runnable handler = (Runnable) key.attachment();
 		if (null != handler) {
 			/**
-			 * WARNING: Running Acceptor/Handler on signal thread is wrong.
-			 * Concurrent operations on Selector object are blocked.
+			 * WARNING: 
+			 * Do not run Acceptor/Handler on signal thread,
+			 * because concurrent operations on Selector object will be blocked.
 			 * 
 			 * What about SocketChannelHandler?
 			 * 
 			 * Shouldn't we use ThreadPool in NIO Apps?
 			 *
-			 * 
 			 */
-			handler.run();
+			try {
+			    threadPool.excute(handler);
+			}catch(InterruptedException e) {
+			    e.printStackTrace();
+			}
+			//handler.run();
 		}
 	}
 
@@ -88,13 +103,17 @@ public class Reactor extends Thread {
 	}
 
 	public SelectionKey register(SelectableChannel selectableChannel, int ops, Object attachment) throws ClosedChannelException {
-		waiting(true);
+		setWaiting(true);
 		selector.wakeup();
 		SelectionKey selectionKey = selectableChannel.register(selector, ops, attachment);
-		waiting(false);
+		setWaiting(false);
 		synchronized (this) {
 			notifyAll();
 		}
 		return selectionKey;
+	}
+	
+	private void setWaiting(boolean waiting) {
+		this.waiting = waiting;
 	}
 }

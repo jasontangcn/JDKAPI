@@ -4,10 +4,6 @@
  */
 package com.fruits.jdkapi.nio.samples;
 
-/**
- * @author TomHornson@hotmail.com
- * 
- */
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -53,6 +49,7 @@ public class Sum {
 	}
 
 	public static void main(String[] args) {
+		/*
 		if (args.length < 1) {
 			System.err.println("Usage: java Sum file...");
 			return;
@@ -65,6 +62,9 @@ public class Sum {
 				System.err.println(f + ": " + x);
 			}
 		}
+		*/
+		
+		sum(ByteBuffer.wrap("1234".getBytes()));
 	}
 
 }

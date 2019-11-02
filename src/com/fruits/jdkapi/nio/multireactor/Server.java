@@ -16,8 +16,8 @@ import java.nio.channels.ServerSocketChannel;
 public class Server {
 	public Server(InetAddress address, int port) throws IOException {
 		Reactor mainReactor = new Reactor();
-		// run it on a signal thread.
-		// if run it on main thread, this programme will block because of the while clause.
+		// run it on a signal thread,
+		// if run it on main thread, this program will block because of the while clause.
 		mainReactor.start();
 		ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
 		serverSocketChannel.configureBlocking(false);
@@ -36,11 +36,10 @@ public class Server {
 
 	public static void main(String[] args) throws IOException {
 		InetAddress address = InetAddress.getLocalHost();
-		int port = 8000;
 		/**
-		 * If address is null ,system will pick up a invalid local address to bind.
-		 * If port is 0,system will pick up a ephenmeral(random) port to bind?
+		 * if address is null, system will pick up a invalid local address to bind.
+		 * if port is 0, system will pick up an ephenmeral(random) port to bind.
 		 */
-		Server reactor = new Server(address, port);
+		Server server = new Server(address, 8000);
 	}
 }

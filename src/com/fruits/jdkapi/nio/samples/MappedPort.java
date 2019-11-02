@@ -4,10 +4,6 @@
  */
 package com.fruits.jdkapi.nio.samples;
 
-/**
- * @author TomHornson@hotmail.com
- *
- */
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -17,9 +13,6 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 
-/**
- * @author elgs@chinaunix.org
- */
 public class MappedPort {
 	private static Selector selector = null;
 	private static ByteBuffer buf = ByteBuffer.allocateDirect(1024 * 100);

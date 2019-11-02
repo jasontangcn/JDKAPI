@@ -14,6 +14,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 
 import com.fruits.jdkapi.nio.NIOConstants;
+import com.fruits.jdkapi.thread.threadpool.ThreadPoolManager;
 
 public class SocketChannelHandler implements Runnable {
 	private ByteBuffer output = ByteBuffer.wrap("Handshake completed.".getBytes(NIOConstants.CHARSET));
@@ -25,7 +26,7 @@ public class SocketChannelHandler implements Runnable {
 
 	private ResizableByteBuffer input = new ResizableByteBuffer();
 	private ByteBuffer inputBuffer = ByteBuffer.allocateDirect(MAX_INPUT_BUFF);
-
+	
 	public static final int READING = 0, SENDING = 1;
 	private int state = READING;
 
@@ -39,13 +40,11 @@ public class SocketChannelHandler implements Runnable {
 		selectionkey = reactor.register(socketChannel, SelectionKey.OP_READ, this);
 	}
 
-	private boolean inputIsComplete() {
+	private boolean inputCompleted() {
 		ByteBuffer buff = input.getBuffer();
 		int size = buff.position();
 		if (size >= 2) {
-			/*
-			 * TODO: Is there something wrong?
-			 */
+			// TODO: Is there something wrong?
 			char c1 = (char) buff.get(size - 1);
 			char c2 = (char) buff.get(size - 2);
 			if (c1 == '\n' && c2 == '\r')
@@ -54,7 +53,7 @@ public class SocketChannelHandler implements Runnable {
 		return false;
 	}
 
-	private boolean outputIsComplete() {
+	private boolean outputComplete() {
 		return true;
 	}
 
@@ -73,7 +72,7 @@ public class SocketChannelHandler implements Runnable {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-			doEndingWork();
+			close();
 		} finally {
 		}
 	}
@@ -83,7 +82,7 @@ public class SocketChannelHandler implements Runnable {
 		socketChannel.read(inputBuffer);
 		input.put(inputBuffer);
 
-		if (inputIsComplete()) {
+		if (inputCompleted()) {
 			process();
 			state = SENDING;
 			// Normally also do first write now
@@ -97,16 +96,17 @@ public class SocketChannelHandler implements Runnable {
 		 */
 		socketChannel.write((ByteBuffer) input.getBuffer().flip());
 		socketChannel.write(output);
-		if (outputIsComplete()) {
+		if (outputComplete()) {
 			/*
 			 * TODO: How to do ending work?
 			 */
-			doEndingWork();
+			close();
 		}
 	}
 
-	private void doEndingWork() {
+	private void close() {
 		selectionkey.cancel();
+		
 		try {
 			if ((null != socketChannel) && socketChannel.isOpen())
 				socketChannel.close();

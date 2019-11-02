@@ -10,6 +10,10 @@ import javax.crypto.spec.DESKeySpec;
 
 import com.fruits.jdkapi.io.FileUtil;
 
+/**
+ * @author Jason Tang
+ */
+
 public class CryptographicClassLoader extends ClassLoader {
 	private Cipher cipher = null;
 

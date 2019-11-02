@@ -16,7 +16,7 @@ public class RunnableTest extends Thread{
     }
     
     public void run(){
-    	num = 10000;   
+    	  num = 10000;   
         System.out.println(num);
     }
     

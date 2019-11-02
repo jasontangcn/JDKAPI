@@ -12,7 +12,6 @@ import java.nio.ByteBuffer;
 
 public class ResizableByteBuffer {
 	public static final int DEFAULT_CAPACITY = 1024;
-	private int capacity = 0;
 	private ByteBuffer data;
 
 	public ResizableByteBuffer() {

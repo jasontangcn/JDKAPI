@@ -40,22 +40,17 @@ public class Reactor implements Runnable {
 		serverSocket.socket().bind(address);
 
 		serverSocket.configureBlocking(false);
-		// 向selector注册该channel
 		SelectionKey selectionKey = serverSocket.register(selector, SelectionKey.OP_ACCEPT);
-		// 利用selectionKey的attache功能绑定Acceptor如果有事情，触发Acceptor
 		selectionKey.attach(new Acceptor());
 	}
 
-	public void run() { // normally in a new Thread
+	public void run() { // usually in a new Thread
 		try {
 			while (!Thread.interrupted()) {
 				if (selector.select() > 0) {
 					Set selectedKeys = selector.selectedKeys();
 					Iterator it = selectedKeys.iterator();
-					// Selector如果发现channel有OP_ACCEPT或READ事件发生，下列遍历就会进行。
 					while (it.hasNext())
-						// 触发一个accepter线程
-						// 以后触发SocketReadHandler
 						dispatch((SelectionKey) (it.next()));
 					selectedKeys.clear();
 				}
@@ -64,29 +59,23 @@ public class Reactor implements Runnable {
 		}
 	}
 
-	// 运行Acceptor或SocketReadHandler
 	void dispatch(SelectionKey selectionKey) {
 		Runnable acceptor = (Runnable) (selectionKey.attachment());
 		if (null != acceptor) {
-			if (null != threadPool) {
 				try {
 					threadPool.excute(acceptor);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			} else {
-				acceptor.run();
-			}
 		}
 	}
 
-	class Acceptor implements Runnable { // inner
+	class Acceptor implements Runnable {
 		public void run() {
 			try {
 				SocketChannel socketChannel = serverSocket.accept();
 				if (null != socketChannel)
-					// 调用Handler来处理channel
-					new SocketReadHandler(selector, socketChannel);
+					new SocketIOHandler(selector, socketChannel);
 			} catch (IOException e) {
 			}
 		}

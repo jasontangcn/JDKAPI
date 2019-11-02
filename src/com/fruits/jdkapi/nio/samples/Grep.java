@@ -4,10 +4,6 @@
  */
 package com.fruits.jdkapi.nio.samples;
 
-/**
- * @author TomHornson@hotmail.com
- * 
- */
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;

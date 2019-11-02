@@ -15,9 +15,8 @@ public class DateTimeUtil {
 	 * @return current datetime, pattern: "yyyy-MM-dd HH:mm:ss".
 	 */
 	public static String getDateTime() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String dt = sdf.format(new Date());
-		return dt;
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return df.format(new Date());
 	}
 
 	/**
@@ -28,9 +27,8 @@ public class DateTimeUtil {
 	 * @return current datetime
 	 */
 	public static String getDateTime(String pattern) {
-		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-		String dt = sdf.format(new Date());
-		return dt;
+		SimpleDateFormat df = new SimpleDateFormat(pattern);
+		return df.format(new Date());
 	}
 
 	/**
@@ -40,14 +38,14 @@ public class DateTimeUtil {
 	 *          java.util.Date
 	 * @return short format datetime
 	 */
-	public static String shortFmt(Date date) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		return sdf.format(date);
+	public static String shortFormat(Date date) {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		return df.format(date);
 	}
 
-	public static String normalFmt(Date date) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-		return sdf.format(date);
+	public static String normalFormat(Date date) {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		return df.format(date);
 	}
 
 	/**
@@ -57,11 +55,11 @@ public class DateTimeUtil {
 	 *          datetime string, pattern: "yyyy-MM-dd HH:mm:ss".
 	 * @return java.util.Date
 	 */
-	public static Date parse(String param) {
+	public static Date parse(String dateTime) {
 		Date date = null;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
-			date = sdf.parse(param);
+			date = df.parse(dateTime);
 		} catch (ParseException e) {
 		}
 		return date;

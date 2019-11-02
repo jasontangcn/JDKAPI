@@ -37,7 +37,7 @@ public class Client {
 			try {
 				Thread.sleep(1 * 1000);
 			} catch (InterruptedException ie) {
-				// ignore
+				ie.printStackTrace();
 			}
 			serverSocket.write(out);
 			// write terminated

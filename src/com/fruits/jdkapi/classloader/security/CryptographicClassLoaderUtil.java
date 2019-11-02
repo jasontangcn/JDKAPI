@@ -9,7 +9,7 @@ public class CryptographicClassLoaderUtil {
 			String command = args[0];
 			if("generateKey".equals(command)) {
 				if(args.length > 1) {
-				  String alogrthm = args[1];
+				  String algorithm = args[1];
 				  FileUtil.writeFile(CryptographicClassLoader.generateKey("DES"), "keystore");
 				}
 			}else if("encrypt".equals(command)){

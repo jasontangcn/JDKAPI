@@ -22,6 +22,7 @@ public class SetFieldAccessible {
 		Class c = SetFieldAccessibleInnerClass.class;
 		Field nameField = c.getDeclaredField("name");
 		nameField.setAccessible(true);
+		//nameField.setAccessible(true);
 		JDKAPIUtils.syslog(nameField.get(o));
 	}
 }

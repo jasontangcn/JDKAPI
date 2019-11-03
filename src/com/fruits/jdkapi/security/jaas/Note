@@ -1,0 +1,11 @@
+1. How to run it?
+Need to add JVM option:
+
+-Djava.security.auth.login.config=D:\eclipse-photon-workspace\JDKAPIShadow\bin\com\fruits\jdkapi\security\jaas\login.conf
+
+and make sure program could load the users.xml and groups.xml.
+
+
+1. copy jaas.jar and jaasmod.jar to JDK jre\lib\ext(D:\JDK1.3\jre\lib\ext).
+2. append "auth.policy.provider=com.ibm.resource.security.auth.XMLPolicyFile" to jre\lib\security\java.security
+3. execute run.bat

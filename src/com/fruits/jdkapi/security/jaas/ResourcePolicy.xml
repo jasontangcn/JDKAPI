@@ -1,26 +1,32 @@
 <?xml version="1.0"?>
 <policy>
 	<grant codebase="file:/D:/JaasExample.jar">
-		<principal classname="com.fairchild.jdkapi.security.jaas.ExamplePrincipal" name="users">
-			<permission classname="com.fairchild.jdkapi.security.jaas.ResourcePermission" 
-			            name="com.fairchild.jdkapi.security.jaas.UserProfile"
-			            actions="create" /> 
-			<permission classname="com.fairchild.jdkapi.security.jaas.ResourcePermission" 
-			            name="com.fairchild.jdkapi.security.jaas.UserProfile"
-			            actions="write,delete,read" 
-						relationship="owner" />			            						
-			<permission classname="com.fairchild.jdkapi.security.jaas.ResourcePermission" 
-			            name="com.fairchild.jdkapi.security.jaas.UserProfile"
-			            actions="read" 
-						relationship="janesManager" />			            									            
+		<principal
+			classname="com.fruits.jdkapi.security.jaas.ExamplePrincipal"
+			name="users">
+			<permission
+				classname="com.fruits.jdkapi.security.jaas.ResourcePermission"
+				name="com.fruitbts.jdkapi.security.jaas.UserProfile"
+				actions="create" />
+			<permission
+				classname="com.fruits.jdkapi.security.jaas.ResourcePermission"
+				name="com.fruitbts.jdkapi.security.jaas.UserProfile"
+				actions="write,delete,read" relationship="owner" />
+			<permission
+				classname="com.fruits.jdkapi.security.jaas.ResourcePermission"
+				name="com.fruitbts.jdkapi.security.jaas.UserProfile" actions="read"
+				relationship="janesManager" />
 		</principal>
 	</grant>
-	
+
 	<grant codebase="file:/D:/JaasExample/*">
-		<principal classname="com.fairchild.jdkapi.security.jaas.ExamplePrincipal"  name="administrators">
-			<permission classname="com.fairchild.jdkapi.security.jaas.ResourcePermission" 
-			            name="com.fairchild.jdkapi.security.jaas.UserProfile"
-			            actions="create,delete,read,write,execute" /> 
+		<principal
+			classname="com.fruits.jdkapi.security.jaas.ExamplePrincipal"
+			name="administrators">
+			<permission
+				classname="com.fruits.jdkapi.security.jaas.ResourcePermission"
+				name="com.fruits.jdkapi.security.jaas.UserProfile"
+				actions="create,delete,read,write,execute" />
 		</principal>
 	</grant>
 </policy>
